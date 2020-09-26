@@ -4,6 +4,8 @@
   "description": "Server side rendering project",
   "main": "index.js",
   "scripts": {
+    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
+    "dev:build:server": "webpack --config webpack.server.js --watch",
     "start": "webpack --config webpack.server.js && node build/bundle.js"
   },
   "author": "",
@@ -23,7 +25,6 @@
     "express": "4.15.4",
     "express-http-proxy": "1.0.6",
     "lodash": "4.17.4",
-    "nodemon": "1.12.0",
     "npm-run-all": "4.1.1",
     "react": "16.0.0",
     "react-dom": "16.0.0",
@@ -38,5 +39,8 @@
     "webpack-dev-server": "2.8.2",
     "webpack-merge": "4.1.0",
     "webpack-node-externals": "1.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.12.0"
   }
 }
