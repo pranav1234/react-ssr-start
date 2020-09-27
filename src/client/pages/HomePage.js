@@ -1,17 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { fetchLaunch } from "../actions";
-import { Button, Container, AppBar, Typography } from "@material-ui/core";
+import Header from "../components/Header";
+import Grid from "@material-ui/core/Grid";
+import Filters from "../components/Filters";
+import LaunchCards from "../components/LaunchCards";
 
-const Home = (props) => {
-  console.log("props:-------- ", props);
+const Home = ({ launches: serverLaunches }) => {
+  const [launches, setLaunches] = useState(serverLaunches);
+  const [selectedYear, setSelectedYear] = useState("");
+  const [isLaunchSuccessFilter, setIsLaunchSuccessFilter] = useState("");
+  const onYearSearch = (year) => {};
+  const onSuccessLaunchSearch = (isLaunchSuccessSearch) => {};
+
   return (
     <div>
-      <AppBar position="static">
-        <Typography variant="h6">SpaceX Launch Programs</Typography>
-      </AppBar>
-      <div>I'm the VERY VERY BEST home component</div>
-      <button onClick={() => console.log("Hi there!")}>Press me!</button>
+      <Header />
+      <Grid container>
+        <Grid xs={12} md={2} item>
+          <Filters
+            onYearSearch={onYearSearch}
+            selectedYear={selectedYear}
+            onSuccessLaunchSearch={onSuccessLaunchSearch}
+            isLaunchSuccessFilter={isLaunchSuccessFilter}
+          />
+        </Grid>
+        <Grid xs={12} md={10} item>
+          <Grid className="space-launch-container" spacing={3} container>
+            <LaunchCards launches={launches} />
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 };
