@@ -1,17 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { fetchLaunch } from "../actions";
 import Header from "../components/Header";
 import Grid from "@material-ui/core/Grid";
 import Filters from "../components/Filters";
 import LaunchCards from "../components/LaunchCards";
+import queryString from "query-string";
 
-const Home = ({ launches: serverLaunches }) => {
+const Home = ({ launches: serverLaunches, history, fetchLaunch }) => {
   const [launches, setLaunches] = useState(serverLaunches);
   const [selectedYear, setSelectedYear] = useState("");
   const [isLaunchSuccessFilter, setIsLaunchSuccessFilter] = useState("");
-  const onYearSearch = (year) => {};
-  const onSuccessLaunchSearch = (isLaunchSuccessSearch) => {};
+  const onYearSearch = (year) => {
+    let params = queryString.parse(location.search);
+    let searchParams = { ...params, launch_year: year };
+    history.push({ search: queryString.stringify(searchParams) });
+    fetchLaunch("?" + queryString.stringify(searchParams));
+  };
+  useEffect(() => {
+    setLaunches(serverLaunches);
+  }, [serverLaunches]);
+  const onSuccessLaunchSearch = (isLaunchSuccessSearch) => {
+    let params = queryString.parse(location.search);
+    let searchParams = { ...params, launch_success: isLaunchSuccessSearch };
+    history.push({ search: queryString.stringify(searchParams) });
+    fetchLaunch("?" + queryString.stringify(searchParams));
+  };
 
   return (
     <div>
