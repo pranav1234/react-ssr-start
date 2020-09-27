@@ -18,7 +18,14 @@ const config = {
     filename: "bundle.js",
     path: path.resolve(__dirname, "build"),
   },
-
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        loader: "css-loader/locals",
+      },
+    ],
+  },
   externals: [webpackNodeExternals()],
 };
 

@@ -8,7 +8,7 @@ import { Provider } from "react-redux";
 import { renderRoutes } from "react-router-config";
 import Routes from "./Routes";
 import reducers from "./reducers";
-
+import "./client.scss";
 const store = createStore(
   reducers,
   window.INITIAL_STATE,
