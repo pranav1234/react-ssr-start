@@ -40,9 +40,7 @@ const Home = ({ launches: serverLaunches, history, fetchLaunch }) => {
           />
         </Grid>
         <Grid xs={12} md={10} item>
-          <Grid className="space-launch-container" spacing={3} container>
-            <LaunchCards launches={launches} />
-          </Grid>
+          <LaunchCards launches={launches} />
         </Grid>
       </Grid>
     </div>
