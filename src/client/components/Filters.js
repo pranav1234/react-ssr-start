@@ -34,9 +34,13 @@ export default function Filters({
       </Typography>
       <Divider />
 
-      <Grid container>
+      <div className="container__row">
         {getYearArray().map((year) => (
-          <Grid xs={6} sm={2} md={6} item>
+          <div
+            className={
+              "container__col-sm-2 container__col-md-6 container__col-xs-6"
+            }
+          >
             <Button
               style={{ margin: 10 }}
               variant="contained"
@@ -46,15 +50,20 @@ export default function Filters({
             >
               {year}
             </Button>
-          </Grid>
+          </div>
         ))}
-      </Grid>
+      </div>
       <Typography color="textSecondary" component="div">
         Successful Launch
       </Typography>
       <Divider />
-      <Grid container>
-        <Grid xs={6} sm={2} md={6} item>
+      <div className="container__row">
+        <div
+          className={
+            "container__col-sm-2 container__col-md-6 container__col-xs-6"
+          }
+        >
+          {" "}
           <Button
             onClick={() => onSuccessLaunchSearch(true)}
             style={{ margin: 10 }}
@@ -64,8 +73,13 @@ export default function Filters({
           >
             True
           </Button>
-        </Grid>
-        <Grid xs={6} sm={2} md={6} item>
+        </div>
+        <div
+          className={
+            "container__col-sm-2 container__col-md-6 container__col-xs-6"
+          }
+        >
+          {" "}
           <Button
             onClick={() => onSuccessLaunchSearch(false)}
             style={{ margin: 10 }}
@@ -75,8 +89,8 @@ export default function Filters({
           >
             False
           </Button>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Paper>
   );
 }

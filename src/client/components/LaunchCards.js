@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import LaunchCard from "./LaunchCard";
 
 const LaunchCards = ({ launches }) => (
-  <Grid className="space-launch-container" spacing={3} container>
+  <div className="container__row">
     {launches.map(
       ({
         mission_name,
@@ -15,7 +15,11 @@ const LaunchCards = ({ launches }) => (
         launch_landing,
       }) => {
         return (
-          <Grid key={flight_number} xs={12} md={3} sm={6} item>
+          <div
+            className={
+              "container__col-sm-3-10 container__col-xs-12-10   launchCard__wrapper"
+            }
+          >
             <LaunchCard
               mission_patch_small={mission_patch_small}
               mission_name={mission_name}
@@ -25,11 +29,11 @@ const LaunchCards = ({ launches }) => (
               launch_success={launch_success}
               launch_landing={launch_landing}
             />
-          </Grid>
+          </div>
         );
       }
     )}
-  </Grid>
+  </div>
 );
 
 export default LaunchCards;

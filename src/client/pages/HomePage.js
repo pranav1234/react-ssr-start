@@ -30,19 +30,22 @@ const Home = ({ launches: serverLaunches, history, fetchLaunch }) => {
   return (
     <div>
       <Header />
-      <Grid container>
-        <Grid xs={12} md={2} item>
+      <div className={"container--fluid container__row"}>
+        <div
+          style={{ marginTop: 10 }}
+          className={"container__col-sm-2 container__col-xs-12"}
+        >
           <Filters
             onYearSearch={onYearSearch}
             selectedYear={selectedYear}
             onSuccessLaunchSearch={onSuccessLaunchSearch}
             isLaunchSuccessFilter={isLaunchSuccessFilter}
           />
-        </Grid>
-        <Grid xs={12} md={10} item>
+        </div>
+        <div className={"container__col-sm-10 container__col-xs-12"}>
           <LaunchCards launches={launches} />
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </div>
   );
 };

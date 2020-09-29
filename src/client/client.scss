@@ -1,3 +1,56 @@
+$grid__bp-sm: 700;
+$grid__bp-md: 1024;
+$grid__bp-lg: 1440;
+$grid__cols: 12;
+$space: 10;
 body {
   margin: 0;
+}
+$map-grid-props: (
+  "-xs": 0,
+  "-sm": $grid__bp-sm,
+  "-md": $grid__bp-md,
+  "-lg": $grid__bp-lg,
+);
+@mixin create-mq($breakpoint) {
+  @if ($breakpoint == 0) {
+    @content;
+  } @else {
+    @media screen and (min-width: $breakpoint *1px) {
+      @content;
+    }
+  }
+}
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint, $space) {
+  @include create-mq($breakpoint) {
+    @for $i from 1 through $grid-cols {
+      &__col#{$modifier}-#{$i} {
+        flex-basis: (100 / ($grid-cols / $i)) * 1%;
+      }
+      &__col#{$modifier}-#{$i}-#{$space} {
+        flex-basis: ((100 / ($grid-cols / $i)) * 1%) -
+          ($space/($grid-cols / $i));
+      }
+    }
+  }
+}
+
+.container {
+  max-width: $grid__bp-md * 1px;
+  margin: 0 auto;
+  &--fluid {
+    margin: 0;
+    max-width: 100%;
+  }
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  @each $modifier, $breakpoint in $map-grid-props {
+    @include create-col-classes($modifier, $grid__cols, $breakpoint, $space);
+  }
+}
+.launchCard__wrapper {
+  margin: 10px;
 }
