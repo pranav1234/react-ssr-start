@@ -40,6 +40,7 @@ export default function Filters({
             className={
               "container__col-sm-2 container__col-md-6 container__col-xs-6"
             }
+            key={year}
           >
             <Button
               style={{ margin: 10 }}
