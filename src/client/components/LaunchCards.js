@@ -3,7 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import LaunchCard from "./LaunchCard";
 
 const LaunchCards = ({ launches }) => (
-  <div className="container__row">
+  <div style={{ justifyContent: "center" }} className="container__row">
     {launches.map(
       ({
         mission_name,
